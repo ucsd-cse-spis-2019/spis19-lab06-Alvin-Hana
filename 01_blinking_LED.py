@@ -28,10 +28,10 @@ if __name__ == '__main__':                      # Program starts here
 
             print('LED on')
             GPIO.output(LedPin, GPIO.HIGH)      # LED on
-            time.sleep(0.5)
+            time.sleep(0.25)
             print('LED off')
             GPIO.output(LedPin, GPIO.LOW)  	# LED off
-            time.sleep(0.5)
+            time.sleep(0.25)
 
 
     # Reset by pressing CTRL + C
