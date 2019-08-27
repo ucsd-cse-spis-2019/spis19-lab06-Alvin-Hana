@@ -28,10 +28,14 @@ if __name__ == '__main__':                      # Program starts here
 
         # This code repeats forever
         while True:
-                
+            #GPIO.output(LedPin, GPIO.HIGH)
+
             button = GPIO.input(BtnPin)
             print(button)
-
+            if GPIO.input(BtnPin)==0:
+                GPIO.output(LedPin, GPIO.HIGH)
+            else:
+                GPIO.output(LedPin, GPIO.LOW)
 
 
     # Reset by pressing CTRL + C
