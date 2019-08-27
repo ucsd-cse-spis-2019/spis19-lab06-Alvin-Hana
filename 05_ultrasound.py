@@ -3,17 +3,21 @@
 # Import the relevant libraries
 import RPi.GPIO as GPIO
 import time
-
+GPIO.cleanup()
 # GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BOARD)
  
 # set GPIO Pins
 TriggerPin  = 12
 EchoPin     = 18
+LedPin = 11
  
 # set GPIO direction (IN / OUT)
 GPIO.setup(TriggerPin, GPIO.OUT)
 GPIO.setup(EchoPin, GPIO.IN)
+GPIO.setup(LedPin, GPIO.OUT)
+
+GPIO.output(LedPin, GPIO.LOW)
 
 # Wait for sensor to settle
 GPIO.output(TriggerPin, False)
@@ -78,8 +82,11 @@ if __name__ == '__main__':
             dist = distance()
             
             print("Measured Distance = {0} cm".format(dist))
-
-            time.sleep(0.5)
+            GPIO.output(LedPin, GPIO.HIGH)      # LED on
+            time.sleep(dist/30)
+            GPIO.output(LedPin, GPIO.LOW)  	# LED off
+            time.sleep(dist/30)
+#            time.sleep(0.5)
  
 
 
